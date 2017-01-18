@@ -1,13 +1,18 @@
 package com.is.dao.implementation;
 
 import com.is.dao.BookDao;
+import com.is.dao.mapper.BookRowMapper;
 import com.is.dao.mapper.UserRowMapper;
+import com.is.model.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
+
+import javax.sql.DataSource;
+import java.util.List;
 
 
 /**
@@ -50,7 +55,7 @@ public class DefaultBookDao implements BookDao {
                 + "(bookId, name, author, price) VALUES (?, ?, ?, ?)";
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
         jdbcTemplate.update(sql,
-                new Object[]{book.getBookId, book.getName, book.getAuthor, book.getPrice});
+                new Object[]{book.getBookId(), book.getName(), book.getAuthor(), book.getPrice()});
     }
 
     @Override
@@ -63,7 +68,7 @@ public class DefaultBookDao implements BookDao {
                         " WHERE bookId= ? ",
                 bookToBeUpdated.getName(),
                 bookToBeUpdated.getAuthor(),
-                bookToBeUpdated.getPrice();
+                bookToBeUpdated.getPrice());
     }
 
 
