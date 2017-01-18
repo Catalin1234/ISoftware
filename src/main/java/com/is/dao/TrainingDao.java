@@ -1,6 +1,6 @@
-package com.endava.dao;
+package com.is.dao;
 
-import com.endava.model.Training;
+import com.is.model.Training;
 
 import java.util.List;
 
@@ -15,8 +15,7 @@ public interface TrainingDao {
 
     void addTraining(Training training);
 
-   void updateTraining(Training trainingToBeUpdated);
-
+    void updateTraining(Training trainingToBeUpdated);
 
     Training getTrainingByName(String name);
 
